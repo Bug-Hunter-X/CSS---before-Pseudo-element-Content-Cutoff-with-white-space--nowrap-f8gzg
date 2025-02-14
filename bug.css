@@ -1,0 +1,19 @@
+The following CSS code snippet demonstrates an unusual issue where the `::before` pseudo-element's content is unexpectedly cut off when applying specific styling: 
+
+```css
+.container {
+  width: 200px;
+  height: 100px;
+  position: relative;
+}
+
+.container::before {
+  content: "This is a long string that might overflow.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap; /* This might be the source of unexpected behavior */
+}
+```
+
+The problem is that `white-space: nowrap;` is used which usually prevents text wrapping. This can cause unexpectedly cutoff text when the container doesn't have enough width to hold the whole string. 
