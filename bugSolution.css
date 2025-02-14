@@ -1,0 +1,29 @@
+Several solutions can address this issue:
+
+**1. Using `text-overflow: ellipsis;`:** This approach adds an ellipsis (...) at the end of the text when it overflows its container. This is a clean solution if truncation is visually acceptable.
+
+```css
+.container::before {
+  content: "This is a long string that might overflow.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+```
+
+**2. Allowing text wrapping:**  Remove `white-space: nowrap;` to let the text wrap within the container's boundaries.  This solution works well if wrapping is suitable for the design.  You may also need to adjust `width` and `height` of the container.
+
+```css
+.container::before {
+  content: "This is a long string that might overflow.";
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* white-space: nowrap; removed */
+}
+```
+
+Choose the approach that best fits your design requirements.  If you need more sophisticated text handling, explore techniques like JavaScript-based solutions to dynamically handle overflowing text.
